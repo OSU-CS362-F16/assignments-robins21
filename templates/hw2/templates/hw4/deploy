@@ -1,3 +1,0 @@
-cp -rf target/site/cobertura/ ~/public_html/report/
-chmod 0775 ~/public_html
-chmod -R 0775 ~/public_html/report	
