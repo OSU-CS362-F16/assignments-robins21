@@ -1,0 +1,46 @@
+Travis Robinson
+CS362
+HM3
+P2
+Oregon State University
+Fall 2016
+
+1)
+-We don't need to consider a partion where CardCollection.cards is null because of
+the way that CardCollection stores a deck: it stores it in an ArrayList, which in
+Java can not be null, though it can be empty.
+
+-We do not. We consider the states of an empty deck, one deck and multiple decks.
+These could be partitioned further with decks of varying size (such as a deck of
+size one), but would add nothing to the tests. We should though test the case of
+a deck of size one. We would for example, want to ensure that after discarding 
+the last card the the deck was then empty.
+
+-Possibly. We consider the states of handPos for the first and last elements, as 
+well as a middle element. In the case of the empty deck, we consider all three
+at the same time (since there are no cards in the empty deck). It might be good
+for error control however to test for the case where handPos asks for a card
+beyong the size of the deck.
+
+-It does not. We should consider the case of a deck containing one card. It may be
+good error control to test the function when handPos is greater than the size of
+the deck, though it could also be assumed that the one calling on the discard 
+function would do that themselves.
+
+2)
+The bug occurs when there is more than one copy of a card, and a later copy of
+that card is discarded. The way the discard function is designed, it will 
+discard the first copy of that card, rather than the one at the designated 
+position. Of the provided partitions, the test will always fail for partition b5,
+(because it will always be told to discard card 104 but will instead discard card
+52) and will sometimes fail for partition b6, depending on where exaclty x is.
+(The failure x will be whenever it's greater than 52. For 52 and less, it will
+pass the test.)
+
+3)
+It tells us that there's a problem with partition b6. In particular, the problem
+lies with us having multiples of every card and removing one from the middle.
+As said in question 2, there are problems with this if the card that the discard
+function is called on is the second copy of that card in the deck, because what
+will end up happening is that the first copy of that card will be removed, rather
+than the desired second deck.
