@@ -1,0 +1,72 @@
+Travis Robinson
+CS362
+Hmwk2
+P2
+Fall 2016
+Oregon State University
+
+The bug is contained in the discardCard method, where the wrong remove function is
+called on. One remove function, which takes an int as a paramter, will remove that
+element. The other will take as a parameter an object, and remove the first instance
+of that object; this is the one used. This causes an error when there is more
+than one card of the same type in the deck and the second copy of that card has 
+the discard function called on it. What then happens is the first copy of that card 
+is removed. As an example, if a card collection has a 10 Diamond, an Ace Club, and 
+a 10 Diamond, and the discard function gets called on the third card, which is the 
+second 10 Diamond, the first will be discarded leaving a collection of Ace Club and 
+10 Diamond, instead of the expected 10 Diamond and Ace Club.
+
+A Junit test that can find it is below:
+
+    @Test
+    public void testDiscardCardADuplicateLast(){
+        ArrayList<Card> deck1 = new ArrayList<Card>();
+
+        for ( Card.Suit suit : Card.Suit.values()){
+            for ( Card.Face face : Card.Face.values()){
+                deck1.add(new Card(face,suit));
+            }
+        }
+
+        for ( Card.Suit suit : Card.Suit.values()){
+            for ( Card.Face face : Card.Face.values()){
+                deck1.add(new Card(face,suit));
+            }
+        }
+
+        CardCollection collection1 = new CardCollection();
+        collection1.add(deck1);
+
+        collection1.discardCard(deck1.size()-1);
+        Card[] deckArr2 = collection1.getCards().toArray(new Card[0]);
+
+        deck1.remove(deck1.size()-1);
+        Card[] deckArr1 = deck1.toArray(new Card[0]);
+
+        assertEquals(deckArr1,deckArr2);
+    }
+
+This would expect that deckArr1 and deckArr2 are equal, that they both removed 
+the last card. Instead, deckArr1 is missing the last card, but deckArr2 is 
+missing the 52nd card.
+
+This error could surface in decks where cards are always drawn from the top if 
+there is more than one copy of each card in that deck, depending on what is 
+meant by “draw from the top.” If it is meant that the card that is drawn is 
+always the last one in the ArrayList, then yes it will occur. If draw from the 
+top means always the first card in the ArrayList (element 0) then the error will 
+not occur.
+
+This error could also occur in a hand where the player must keep their cards in 
+order, assuming they are allowed to play them out of that order, because they may 
+decide to play the last card, and if it's the same card as any prior card, the 
+prior card will be discarded. If they must play the cards in order in addition to 
+keeping them in order, this error will not surface.
+
+For the case of shuffling a deck by removing cards from random locations and adding 
+them back, this error could occur but may be hard to find and may not have any 
+actual impact. If the card has more than one copy of a card in it's deck, and the 
+second one is selected to be shuffled, the first copy will instead be removed and 
+moved to the back. This could affect the probability of a cards location depending 
+on the implementation of the random selection method, but probably not enough to 
+really affect gameplay.
