@@ -1,0 +1,20 @@
+Travis Robinson
+CS362
+Hmwk2
+P1
+Fall 2016
+Oregon State University
+
+last Zero:
+This function produces incorrect input when the last zero is in the 0th array element. It will return -1 when the expected return is 0.
+
+There is an exception when testing for a null/empty array. The expected return is -1.
+
+last:
+This function produces exceptions for all values exept a null array.
+
+positive:
+This function produces a null pointer exception for an empty array.
+
+oddOrPos:
+This function produces an exception for an empty array.

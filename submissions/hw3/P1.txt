@@ -1,0 +1,52 @@
+Travis Robinson
+CS362
+HW3
+Oregon State University
+Fall 2016
+1) Correction of bug in lastZero:
+	public static int lastZero(int[] arr) {
+
+		/*
+
+		 * Returns the index of the last occurance of 0 or -1 if no such element
+
+		 * exists
+		 
+		*/
+
+
+		for (int i = arr.length - 1; i >= 0; i--) {
+
+			if (arr[i] == 0) {
+
+				return i;
+
+			}
+
+		}
+
+		return -1;
+
+	}
+
+2) Partition of lastZero Test Cases:
+	Yes, it's possible to organize into partitions. The test cases I have are:
+
+testLastZeroOneZeroEachCell: This tests the case of there being one zero in the array, testing each element for it.
+(This was done to ensure the first, last and a middle element were all tested)
+
+testLastZeroEmptyArray: This tests the condition of an array being passed that contains no elements
+
+testLastZeroNoZeros: This test ensure that we receive correct results when there are no zeros in the array
+
+testLastZeroMultipleZeros: This test goes through an array testing the case of having multiple zeros. It tests when
+the first two elements are zeros up through all elements being zero. (This was done to ensure that cases of the first
+and last elements being zero are checked, as well as a middle element, and all elements.
+
+3) Advantage of Disjoint Test Cases:
+	The advantage of having disjoint test cases is that it decreases the number of tests that are required while 
+still allowing for tests to cover forseeable usage situations. For example, in the above only four tests were 
+required to check on the entire range of possible inputs.
+
+
+
