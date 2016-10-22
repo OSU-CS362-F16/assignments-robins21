@@ -1,0 +1,64 @@
+Travis Robinson
+CS362
+Hmwk4
+P4
+Fall 2016
+Oregon State University
+
+1) True
+2) False
+3) True
+4) False
+5) Yes
+Class ForFunction
+	Function(a):
+	if (a == 1):
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		...
+	else:
+		print "a is not 1"
+	
+	Test Suite:
+	@Test
+	TestFunction:
+	ForFunction.Function(2)
+
+6) Yes
+Class ForFunction
+	Function(a):
+	if (a == 1):
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		print "a is 1"
+		...
+	else:
+		print "a is not 1"
+	
+	Test Suite:
+	@Test
+	TestFunction:
+	ForFunction.Function(1)
+
+7) They aligned pretty well. I got high line coverage, and my branch coverage is not that
+high on Cobertura, but that's because I couldn't get it to correctly build while there
+were test functions getting errors.

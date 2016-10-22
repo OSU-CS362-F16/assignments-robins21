@@ -1,0 +1,20 @@
+Travis Robinson
+CS362
+Hmwk4
+Fall 2016
+Oregon State University
+
+1) This means that the branch was 'hit' (or processed) but that there are branches within that
+not all possible paths of that branch have been reached (such as traveling down an if path but
+not the else)
+
+2) The interface is just a framework; there's no real code to work in interfaces because they 
+simply provide the basic skeleton (parameters, function name and purpose, etc) but no actual
+implementation.
+
+3) It will only test the basic function; it won't test the interactions of numerous functions,
+nor will it test the use of those functions in practice; it can simply test if that function
+returns the correct values.
+
+4) The more if/else statements the more branches there are, as each if/else is the creation of
+two possible branches.

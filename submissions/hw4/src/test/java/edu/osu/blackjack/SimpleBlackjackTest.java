@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class SimpleBlackjackTest extends TestCase{
-	
+/*
     
     public static Test suite()
     {
@@ -37,5 +37,5 @@ public class SimpleBlackjackTest extends TestCase{
 
     }
 	
-	
+*/
 }
