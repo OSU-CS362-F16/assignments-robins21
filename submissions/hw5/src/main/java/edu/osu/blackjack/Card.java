@@ -46,14 +46,14 @@ public class Card {
 	  }
 
 	  public static ArrayList<Card> newDeck() {
-		  return new ArrayList<Card>(protoDeck); // Return copy of prototype deck
+		  return new ArrayList<Card>(protoDeck); 
 	  }
 
-		public boolean isVisible() {
-			return this.visible;
-		}
+	  public boolean isVisible() {
+		  return this.visible;
+	  }
 		
-		public void setVisible(boolean b){
+	  public void setVisible(boolean b){
 			this.visible = b;
 		}
 		

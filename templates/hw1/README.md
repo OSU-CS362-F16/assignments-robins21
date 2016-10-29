@@ -4,11 +4,7 @@ In this assignment, you'll setting up your development environment and becoming 
 
 # Setup
 
-<<<<<<< HEAD
-If you haven't already, go to github.com and sign up for an account.  You'll also need to [generate an SSH key] (https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) for GitHub so you don't have to enter your password repeatedly.
-=======
 If you haven't already, go to github.com and sign up for an account.  You'll also need to [generate an SSH key] ( https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key ) for GitHub so you don't have to enter your password repeatedly.
->>>>>>> 29ebcd5c56ea003eeab9d860a6815781da7e2055
 
 
 Next, visit GitHub Classroom to clone the class repository [here](https://classroom.github.com/assignment-invitations/58ed997ee132f36cb0de11df3acd9364):

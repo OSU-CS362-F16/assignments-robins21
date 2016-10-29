@@ -1,0 +1,51 @@
+Travis Robinson
+CS362
+Hmwk5
+Fall 2016
+Oregon State University
+
+Bug 3:
+
+Title: Crash When Accessing Player Wallet
+Product: Player.java
+Classificatation: Crashing Bug
+Platform: OSU Flip1, CentOS Linux release 7.2.1511
+Can it be reproduced: Every time
+Descrition: When accessing the Player Waller after calling on the nextHand() method of the Player 
+class, the program crashes. This affects game functionality because the player should be able to
+access their wallet during the next hand to determine how much can be placed in a bet. Instead,
+they experience a game crash.
+
+Failing Test Case:
+    @Test
+    public void testNextHandBeforeBet(){
+        Player player1 = new Player();
+        player1.nextHand();
+        assertTrue(player1.currentBet == null || player1.getCurrentBet() == 0); //null may possible since currentBet starts there
+        assertTrue(player1.currentInsurance == null || player1.makeInsuranceBet() == 0); //null may possible since currentInsurance starts there
+        assertEquals((long)1000,(long)player1.currentWallet);
+    }
+
+In this test case, we should find that the Players current bet is null (or alternatively 0 would also
+work). The wallet should remain at 1000, since the player did not make a bet to win or lose money
+with. Instead the test has an error due to the wallet being null. This would cause a crash within
+the game itself.
+
+Correction to Player:
+
+	Original:
+		@Override
+		public void nextHand() {
+			currentBet = null;
+			currentWallet = null;
+			currentInsurance = null;
+		}
+	
+	Correction:
+	@Override
+	public void nextHand() {
+		currentBet = null;
+		currentInsurance = null;
+	}
+	
+Description: Removed line that was setting player wallet to null after nextHand() method called.
