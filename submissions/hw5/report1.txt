@@ -1,0 +1,64 @@
+Travis Robinson
+CS362
+Hmwk5
+Fall 2016
+Oregon State University
+
+Bug 1:
+
+Title: Incorrect Number of Cards Being Dealth
+Product: SimpleBlackjack.java
+Classificatation: Serious
+Platform: OSU Flip1, CentOS Linux release 7.2.1511
+Can it be reproduced: Every time
+Descrition: When running the SimpleBlackjack class playRound method, each player is being dealt an 
+incorrect number of cards. This affects the functionality of the game because the game does not 
+follow the rules of blackjack as currently implemented.
+
+Failing Test Case:
+
+    @Test
+    public void testCorrectNumberOfCardsDealt(){
+        DealerAction da = mock(DealerAction.class);
+        PlayerAction pa1 = mock(PlayerAction.class);
+        PlayerAction pa2 = mock(PlayerAction.class);
+
+        PlayerAction[] players = {pa1,pa2};
+
+        when(pa1.getAction()).thenReturn(PlayerAction.ActionType.STAND);
+        when(pa2.getAction()).thenReturn(PlayerAction.ActionType.STAND);
+
+        SimpleBlackjack j = new SimpleBlackjack(da,players);
+        j.playRound();
+
+        verify(da, times(2)).dealCard(pa1);
+        verify(da, times(2)).dealCard(pa2);
+        verify(da, times(2)).dealCard(da);
+    }
+	
+In this test case, everyone is dealt the initial hand. All players choose to stand. Following rules 
+of blackjack, each player and the dealer should then have two cards. That is not what we are seeing
+in this test case.
+
+Correction To SimpleBlackjack:
+
+	Original:
+		for(PlayerAction p: players ){
+			dealer.dealCard(dealer);
+			dealer.dealCard(p);
+		}
+
+	Correction:
+		dealer.dealCard(dealer);
+		dealer.dealCard(dealer);
+
+		for(PlayerAction p: players ){
+			dealer.dealCard(p);
+			dealer.dealCard(p);
+		}
+
+	Description of Change: Changed SimpleBlackjack.java to deal two cards to dealer and then cycle
+	through all players to deal each one two cards. Originally would cycle through all players and
+	on each iteration deal one card to player and one card to dealer, resulting in dealing having
+	one card for each player.
+

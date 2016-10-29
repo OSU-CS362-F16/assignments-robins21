@@ -1,0 +1,33 @@
+Travis Robinson
+CS362
+Hmwk4
+P4
+Fall 2016
+Oregon State University
+
+1) True
+2) False
+3) True. If all lines are covered, then that means every line of every possible branch has
+been covered. In other words, if all lines are covered, then there are not lines that aren't
+covered, and if there's no lines that aren't covered, then there's no branch without covered
+lines, so that all branches have been covered.
+4) False. There may be a function written that has no calls to it in the code. Even if all 
+branches are covered, this function would not be covered since it's not been called in the 
+code.
+5) False. Path testing means that all possible paths are tested, meaning every iteration of
+possible branch. As an example, if there's a program with two if/else statements, the possible
+paths would be True-True, True-False, False-True, and False-False. Branch coverage only tests
+each possible branch, so it would only test that each if/else would evaluate correctly, not that
+the route going through these branches evaluates correctly.
+
+6) They aligned pretty well. I got high line coverage, and my branch coverage is not that
+high, but that is due to error's in code making it not possible to reach all branches
+
+7) If properly partioned, a test suite only using domain partioning should be able to get
+coverage of all branches, because each possible branch would then be gone down. (For
+example, if a branch output varies on whether or not a value is 10 or less, proper partitioning
+would ensure that both of those branches would be covered. It would be inferior to having line
+or path coverage though, because full line coverage would check for errors on every statement
+in the program, not just at potential branches, and it would be inferior to full path coverage,
+because path coverage would ensure that the interactions between possible branches would also yield
+correct results.

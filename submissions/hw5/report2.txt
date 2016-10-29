@@ -1,0 +1,66 @@
+Travis Robinson
+CS362
+Hmwk5
+Fall 2016
+Oregon State University
+
+Bug 2:
+
+Title: Dealer Hand Always Empty
+Product: Dealer.java
+Classificatation: Serious
+Platform: OSU Flip1, CentOS Linux release 7.2.1511
+Can it be reproduced: Every time
+Descrition: When the acceptCard() method of the Dealer class is called on and passed a card, that
+card is not received into the dealers hand, and the dealers hand remains empty. This makes it impossible
+for the game to function properly, and ensures that the player will always have a higher score than
+the dealer.
+
+Failing Test Case:
+
+    @Test
+    public void testAcceptCardActualCard(){
+        Card c1 = new Card(Card.Face.SEVEN,Card.Suit.CLUB);
+        Dealer dealer1 = new Dealer();
+        dealer1.acceptCard(c1);
+
+        assertEquals(1,dealer1.getHand().size());//assert hand size == 1
+
+        Card[] dealerHand = dealer1.getHand().toArray(new Card[0]);
+        Card[] expectedDealerHand = new Card[]{c1};
+
+        assertArrayEquals(expectedDealerHand,dealerHand);//assert dealer hand is desired card
+    }
+
+In this test case, what we should be finding is that the dealer hand should have a size of one, and
+that that the only card in it is the Seven of Clubs, as that is the only card that is passed into
+the dealers hand in this test case. Instead, the dealers hand remains empty.
+
+Correction to Dealer:
+
+	Original:
+	
+	@Override
+	public void acceptCard(Card c) {
+		deck.add(c);
+	}
+	
+	@Override
+	public List<Card> getHand() {
+		return this.deck;
+	}
+	
+	Correction:
+	
+	@Override
+	public void acceptCard(Card c) {
+		dealerHand.add(c);
+	}
+	
+	@Override
+	public List<Card> getHand() {
+		return this.dealerHand;
+	}
+	
+Description of Change: acceptCard() method will now add card to dealerHand instead of deck. getHand()
+method will now return dealerHand instead of the deck.
