@@ -10,6 +10,17 @@ import java.util.List;
 import java.util.Random;
 import static org.mockito.Mockito.*;
 
+
+/*
+Assumtions:
+number of tests 100
+minimumum deck size: 100
+maximum deck size: 1000
+    deck size must be large enough for enough cards to be generated for all deal card actions
+maximum wallet size: 2000, just so I have a range to give it
+randomization give to player class for gettin action method
+ */
+
 public class TravisRobinsonRandomTest{
 
     @Test
